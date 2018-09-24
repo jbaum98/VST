@@ -189,7 +189,7 @@ Section Vector_EqDec.
   subst.
   apply eqb_vector_refl.
   
-  Qed.
+  Defined.
 End Vector_EqDec.
 
 (*
@@ -209,12 +209,12 @@ destruct x.
 destruct y.
 trivial.
 
-Qed.
+Defined.
 
 Instance bool_EqDec : EqDec bool.
 refine {| eqb := Bool.eqb |}.
 eapply eqb_true_iff.
-Qed.
+Defined.
 
 (* Bvector decidable equality was added before Vector.t decidable equality.  Definitions remain for compatibility. *)
 Definition eqbBvector n (v1 v2 : Bvector n) : bool :=
@@ -259,7 +259,7 @@ eapply leb_iff; eauto.
 apply andb_true_iff.
 intuition;
 eapply leb_iff; subst; eapply le_refl.
-Qed.
+Defined.
 
 
 Definition eqbPair (A B : Set)(dA : EqDec A)(dB : EqDec B)(p1 p2 : (A*B)) :=
@@ -339,7 +339,7 @@ subst.
 destruct y.
 eapply eqb_leibniz; trivial.
 trivial.
-Qed.
+Defined.
 
 Local Open Scope list_scope.
 Fixpoint eqbList(A : Set)(eqd : EqDec A)(ls1 ls2 : list A) :=
@@ -388,7 +388,7 @@ refine {| eqb := (@eqbList A dA ) |}.
 intuition.
 eapply eqbList_correct1; trivial.
 eapply eqbList_correct2; trivial.
-Qed.
+Defined.
 
 Theorem eqb_false_iff : 
   forall (A : Set)(eqd : EqDec A)(a1 a2 : A),
